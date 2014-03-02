@@ -6,12 +6,13 @@
 
 (install-packs '(cyberpunk-theme
                  solarized-theme
+                 gandalf-theme
                  dash))
 
 ;; some text/font/color tweaks
 
 (setq-default fill-column 120)
-(set-face-background 'default "black")
+;; (set-face-background 'default "black")
 
 (set-language-environment "UTF-8")
 (blink-cursor-mode 1)
@@ -32,6 +33,7 @@
 ;; (load-theme 'zenburn t)
 ;; (load-theme 'solarized-dark t)
 (load-theme 'cyberpunk t)
+;; (load-theme 'gandalf t)
 
 
 ;;; theme-pack.el ends here
