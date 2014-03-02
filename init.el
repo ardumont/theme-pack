@@ -31,11 +31,17 @@
        (font-size (if (string= hostname "dagobah") 140 100)))
   (set-face-attribute 'default nil :height font-size))
 
-;; (disable-them 'zenburn)
-;; (load-theme 'zenburn t)
+;;; dark theme
 ;; (load-theme 'solarized-dark t)
 (load-theme 'cyberpunk t)
+;; (load-theme 'misterioso t)
+
+;;; grey theme
+;; (load-theme 'zenburn t)
+
+;;; light themes
 ;; (load-theme 'gandalf t)
+;; (load-theme 'adwaita t)
 
 
 ;;; theme-pack.el ends here
