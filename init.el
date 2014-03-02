@@ -22,7 +22,9 @@
 
 (require 'dash)
 
-(defun buffer-pack/hostname! () "Return the hostname of the current computer." (-> "hostname" shell-command-to-string s-trim))
+(defun buffer-pack/hostname! ()
+  "Return the hostname of the current computer."
+  (-> "hostname" shell-command-to-string s-trim))
 
 ;; Depending on the hostname, will set a font or another
 (let* ((hostname  (buffer-pack/hostname!))
