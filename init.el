@@ -9,6 +9,9 @@
                  gandalf-theme
                  dash))
 
+;; death to scroll bar
+(set-scroll-bar-mode nil)
+
 ;; some text/font/color tweaks
 
 (setq-default fill-column 120)
