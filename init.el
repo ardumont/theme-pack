@@ -9,6 +9,11 @@
                  gandalf-theme
                  dash))
 
+(require 'hl-line)
+
+;; highlight the current line everywhere
+(global-hl-line-mode 1)
+
 ;; death to scroll bar
 (set-scroll-bar-mode nil)
 
