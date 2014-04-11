@@ -259,10 +259,7 @@
      (apropos-symbol ((t (:foreground "deep pink"))))
      (apropos-function-button ((t (:foreground "#4c83ffn"))))
      (apropos-misc-button ((t (:foreground "yellow3"))))
-     (apropos-variable-button ((t (:foreground "dark green"))))
-
-     ))
-  )
+     (apropos-variable-button ((t (:foreground "dark green")))))))
 
 (custom-set-faces
 
