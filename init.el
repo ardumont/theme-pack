@@ -37,7 +37,7 @@
 
 ;; Depending on the hostname, will set a font or another
 (let* ((hostname  (buffer-pack/hostname!))
-       (font-size (if (string= hostname "dagobah") 140 100)))
+       (font-size (if (string= hostname "dagobah") 120 100)))
   (set-face-attribute 'default nil :height font-size))
 
 ;;; dark theme
