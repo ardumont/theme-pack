@@ -283,4 +283,5 @@
 
 (color-theme-cyberpunk)
 
+(provide 'theme-pack)
 ;;; theme-pack.el ends here
