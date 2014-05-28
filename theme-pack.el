@@ -57,7 +57,6 @@
 ;;;###autoload
 (defun color-theme-cyberpunk ()
   "Cyberpunk colour theme by Sam Aaron."
-  (interactive)
   (color-theme-install
    '(color-theme-cyberpunk
      ((background-color . "black")
@@ -259,29 +258,39 @@
      (apropos-symbol ((t (:foreground "deep pink"))))
      (apropos-function-button ((t (:foreground "#4c83ffn"))))
      (apropos-misc-button ((t (:foreground "yellow3"))))
-     (apropos-variable-button ((t (:foreground "dark green")))))))
+     (apropos-variable-button ((t (:foreground "dark green"))))))
 
-(custom-set-faces
+  (custom-set-faces
 
- ;;nXhtml colours
- '(mumamo-background-chunk-major ((((class color) (background dark)) (:background "black"))))
- '(mumamo-background-chunk-submode1 ((((class color) (background dark)) (:background "black"))))
+    ;;nXhtml colours
+    '(mumamo-background-chunk-major ((((class color) (background dark)) (:background "black"))))
+    '(mumamo-background-chunk-submode1 ((((class color) (background dark)) (:background "black"))))
 
- ;;ediff
- '(ediff-even-diff-A ((((class color) (background dark)) (:background "dark green"))))
- '(ediff-odd-diff-A ((((class color) (background dark)) (:background "dark green"))))
- '(ediff-odd-diff-B ((((class color) (background dark)) (:background "dark red"))))
- '(ediff-even-diff-B ((((class color) (background dark)) (:background "dark red"))))
-; '(ediff-current-diff-B ((((class color)) (:background "white"))))
-; '(ediff-even-diff-A ((((class color)) nil)))
-; '(ediff-even-diff-B ((((class color)) nil)))
-; '(ediff-fine-diff-A ((((class color)) (:background "cyan"))))
-; '(ediff-fine-diff-B ((((class color)) (:background "cyan"))))
-; '(ediff-odd-diff-A ((((class color)) nil)))
-; '(ediff-odd-diff-B ((((class color)) nil)))
- )
+    ;;ediff
+    '(ediff-even-diff-A ((((class color) (background dark)) (:background "dark green"))))
+    '(ediff-odd-diff-A ((((class color) (background dark)) (:background "dark green"))))
+    '(ediff-odd-diff-B ((((class color) (background dark)) (:background "dark red"))))
+    '(ediff-even-diff-B ((((class color) (background dark)) (:background "dark red"))))
+                                        ; '(ediff-current-diff-B ((((class color)) (:background "white"))))
+                                        ; '(ediff-even-diff-A ((((class color)) nil)))
+                                        ; '(ediff-even-diff-B ((((class color)) nil)))
+                                        ; '(ediff-fine-diff-A ((((class color)) (:background "cyan"))))
+                                        ; '(ediff-fine-diff-B ((((class color)) (:background "cyan"))))
+                                        ; '(ediff-odd-diff-A ((((class color)) nil)))
+                                        ; '(ediff-odd-diff-B ((((class color)) nil)))
+    ))
 
-(color-theme-cyberpunk)
+(defun theme-pack/light! ()
+  "For outside."
+  (interactive)
+  (load-theme 'solarized-light 'no-confirm))
+
+(defun theme-pack/dark! ()
+  "Default theme for the inside."
+  (interactive)
+  (color-theme-cyberpunk))
+
+(theme-pack/dark!)
 
 (provide 'theme-pack)
 ;;; theme-pack.el ends here
