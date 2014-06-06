@@ -38,16 +38,17 @@
   (set-face-attribute 'default nil :height font-size))
 
 ;;; dark theme
-;; (load-theme 'solarized-dark t)
-;; (load-theme 'cyberpunk t)
-;; (load-theme 'misterioso t)
+;; (load-theme 'solarized-dark 'no-confirm)
+;; (load-theme 'cyberpunk 'no-confirm)
+;; (load-theme 'misterioso 'no-confirm)
 
 ;;; grey theme
-;; (load-theme 'zenburn t)
+;; (load-theme 'zenburn 'no-confirm)
 
 ;;; light themes
-;; (load-theme 'gandalf t)
-;; (load-theme 'adwaita t)
+;; (load-theme 'gandalf 'no-confirm)
+;; (load-theme 'adwaita 'no-confirm)
+;; (load-theme 'solarized-light 'no-confirm)
 
 (require 'color-theme)
 
