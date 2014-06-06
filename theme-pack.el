@@ -20,6 +20,9 @@
 
 ;; some text/font/color tweaks
 
+(set-frame-parameter nil 'font "DejaVu Sans Mono-12")
+;; (x-list-fonts "*")
+
 (setq-default fill-column 120)
 ;; (set-face-background 'default "black")
 
