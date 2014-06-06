@@ -12,6 +12,7 @@
 (require 'dash)
 
 (require 'hl-line)
+(require 'frame)
 
 ;; highlight the current line everywhere
 (global-hl-line-mode 1)
@@ -20,10 +21,6 @@
 (set-scroll-bar-mode nil)
 
 ;; some text/font/color tweaks
-
-(require 'frame)
-(set-frame-parameter nil 'font "DejaVu Sans Mono-10")
-;; (x-list-fonts "*")
 
 (setq-default fill-column 120)
 ;; (set-face-background 'default "black")
@@ -38,6 +35,8 @@
 ;; Depending on the hostname, will set a font or another
 (let* ((hostname  (buffer-pack/hostname!))
        (font-size (if (string= hostname "dagobah") 120 100)))
+  (set-frame-parameter nil 'font "DejaVu Sans Mono-12")
+  ;; (x-list-fonts "*")
   (set-face-attribute 'default nil :height font-size))
 
 ;;; dark theme
