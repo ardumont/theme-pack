@@ -9,6 +9,7 @@
                  gandalf-theme
                  color-theme
                  dash))
+(require 'dash)
 
 (require 'hl-line)
 
@@ -20,7 +21,8 @@
 
 ;; some text/font/color tweaks
 
-(set-frame-parameter nil 'font "DejaVu Sans Mono-12")
+(require 'frame)
+(set-frame-parameter nil 'font "DejaVu Sans Mono-10")
 ;; (x-list-fonts "*")
 
 (setq-default fill-column 120)
@@ -28,8 +30,6 @@
 
 (set-language-environment "UTF-8")
 (blink-cursor-mode 1)
-
-(require 'dash)
 
 (defun buffer-pack/hostname! ()
   "Return the hostname of the current computer."
