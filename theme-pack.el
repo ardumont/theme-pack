@@ -55,31 +55,26 @@
 
 (require 'color-theme)
 
-(defun theme-pack/--light-theme ()
-  "The light theme used by theme-pack."
-  'solarized-light)
-
-(defun theme-pack/--dark-theme ()
-  "The dark theme used by theme-pack."
-  'cyberpunk)
-
 (defun theme-pack/--disable-themes! ()
   "Disable current enabled themes."
   (mapc 'disable-theme custom-enabled-themes))
+
+(defun theme-pack/--load-theme (theme)
+  "Disable currently enabled themes then load THEME."
+  (theme-pack/--disable-themes!)
+  (load-theme theme 'no-confirm))
 
 ;;;###autoload
 (defun theme-pack/light! ()
   "For outside."
   (interactive)
-  (theme-pack/--disable-themes!)
-  (load-theme (theme-pack/--light-theme) 'no-confirm))
+  (theme-pack/--load-theme 'solarized-light))
 
 ;;;###autoload
 (defun theme-pack/dark! ()
   "Default theme for the inside."
   (interactive)
-  (theme-pack/--disable-themes)
-  (load-theme (theme-pack/--dark-theme) 'no-confirm))
+  (theme-pack/--load-theme 'cyberpunk))
 
 (theme-pack/dark!)
 
