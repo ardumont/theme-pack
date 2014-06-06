@@ -26,9 +26,6 @@
 (set-language-environment "UTF-8")
 (blink-cursor-mode 1)
 
-(put 'downcase-region 'disabled nil)
-(put 'upcase-region 'disabled nil)
-
 (require 'dash)
 
 (defun buffer-pack/hostname! ()
