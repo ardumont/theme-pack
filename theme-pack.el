@@ -28,13 +28,13 @@
 (set-language-environment "UTF-8")
 (blink-cursor-mode 1)
 
-(defun buffer-pack/hostname! ()
+(defun theme-pack/hostname! ()
   "Return the hostname of the current computer."
   (-> "hostname" shell-command-to-string s-trim))
 
 ;; Depending on the hostname, will set a font or another
-(let* ((hostname  (buffer-pack/hostname!))
        (font-size (if (string= hostname "dagobah") 120 100)))
+(let* ((hostname  (theme-pack/hostname!))
   ;; (set-frame-parameter nil 'font "DejaVu Sans Mono-15")
   (set-default-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
   ;; (x-list-fonts "*")
