@@ -76,6 +76,12 @@
   (interactive)
   (theme-pack/--load-theme 'cyberpunk))
 
+;;;###autoload
+(defun theme-pack/no-theme! ()
+  "Revert to no theme."
+  (interactive)
+  (theme-pack/--disable-themes!))
+
 (theme-pack/dark!)
 
 ;; ######### define mode
@@ -84,6 +90,7 @@
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "C-c t d") 'theme-pack/dark!)
     (define-key map (kbd "C-c t l") 'theme-pack/light!)
+    (define-key map (kbd "C-c t r") 'theme-pack/no-theme!)
     map)
   "Keymap for theme-pack mode.")
 
