@@ -36,7 +36,7 @@
 (let* ((hostname  (theme-pack/hostname!))
        (font-size (if (string= hostname "dagobah") 120 80)))
   ;; (set-frame-parameter nil 'font "DejaVu Sans Mono-15")
-  (set-default-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
+  (set-frame-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
   ;; (x-list-fonts "*")
   (set-face-attribute 'default nil :height font-size))
 
