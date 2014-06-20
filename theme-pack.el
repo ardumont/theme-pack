@@ -78,5 +78,29 @@
 
 (theme-pack/dark!)
 
+;; ######### define mode
+
+(defvar theme-pack-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "C-c t d") 'theme-pack/dark!)
+    (define-key map (kbd "C-c t l") 'theme-pack/light!)
+    map)
+  "Keymap for theme-pack mode.")
+
+(define-minor-mode theme-pack-mode
+  "Minor mode to consolidate them-pack extensions.
+
+\\{theme-pack-mode-map}"
+  :lighter " TP"
+  :keymap theme-pack-mode-map)
+
+(define-globalized-minor-mode global-theme-pack-mode theme-pack-mode theme-pack-on)
+
+(defun theme-pack-on ()
+  "Turn on `theme-pack-mode'."
+  (theme-pack-mode +1))
+
+(global-theme-pack-mode)
+
 (provide 'theme-pack)
 ;;; theme-pack.el ends here
