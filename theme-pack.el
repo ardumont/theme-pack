@@ -58,16 +58,13 @@
 
 (require 'color-theme)
 
-(defun theme-pack/apply (fun log)
-  "Execute the theme change through FUN.
-Display the LOG when done."
-  (lexical-let ((fn fun)
-                (msg log))
-    (deferred:$
-      (deferred:next
-        fn)
-      (deferred:nextc it
-        (message (format "theme-pack - %s" msg))))))
+(defun theme-pack/apply (fn msg)
+  "Execute the function FN.
+Display the MSG when done."
+  (deferred:$
+    (deferred:call fn)
+    (deferred:nextc it
+      (message (format "theme-pack - %s" msg)))))
 
 (defun theme-pack/--disable-themes! ()
   "Disable current enabled themes."
