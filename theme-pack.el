@@ -58,13 +58,18 @@
 
 (require 'color-theme)
 
-(defun theme-pack/apply (fn msg)
+(defun theme-pack/apply (fn log)
   "Execute the function FN.
-Display the MSG when done."
-  (deferred:$
-    (deferred:call fn)
-    (deferred:nextc it
-      (message (format "theme-pack - %s" msg)))))
+Display the LOG when done."
+  (lexical-let ((msg log))
+    (deferred:$
+      (deferred:next
+        'theme-pack/--disable-themes!)
+      (deferred:nextc it
+        fn)
+      (deferred:nextc it
+        (lambda ()
+          (message (format "theme-pack - %s" msg)))))))
 
 (defun theme-pack/--disable-themes! ()
   "Disable current enabled themes."
@@ -72,7 +77,6 @@ Display the MSG when done."
 
 (defun theme-pack/--load-theme (theme)
   "Disable currently enabled themes then load THEME."
-  (theme-pack/--disable-themes!)
   (load-theme theme 'no-confirm))
 
 ;;;###autoload
@@ -91,7 +95,7 @@ Display the MSG when done."
 (defun theme-pack/no-theme! ()
   "Revert to no theme."
   (interactive)
-  (theme-pack/apply (apply-partially 'theme-pack/--disable-themes!) "Reset theme done!"))
+  (theme-pack/apply (lambda ()) "Reset theme done!"))
 
 (theme-pack/dark!)
 
