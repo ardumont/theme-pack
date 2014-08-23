@@ -8,7 +8,10 @@
                  solarized-theme
                  gandalf-theme
                  color-theme
+                 deferred
                  dash))
+
+(require 'deferred)
 (require 'dash)
 
 (require 'hl-line)
@@ -55,6 +58,17 @@
 
 (require 'color-theme)
 
+(defun theme-pack/apply (fun log)
+  "Execute the theme change through FUN.
+Display the LOG when done."
+  (lexical-let ((fn fun)
+                (msg log))
+    (deferred:$
+      (deferred:next
+        fn)
+      (deferred:nextc it
+        (message (format "theme-pack - %s" msg))))))
+
 (defun theme-pack/--disable-themes! ()
   "Disable current enabled themes."
   (mapc 'disable-theme custom-enabled-themes))
@@ -68,19 +82,19 @@
 (defun theme-pack/light! ()
   "For outside."
   (interactive)
-  (theme-pack/--load-theme 'solarized-light))
+  (theme-pack/apply (apply-partially 'theme-pack/--load-theme 'solarized-light) "Light theme installed!"))
 
 ;;;###autoload
 (defun theme-pack/dark! ()
   "Default theme for the inside."
   (interactive)
-  (theme-pack/--load-theme 'cyberpunk))
+  (theme-pack/apply (apply-partially 'theme-pack/--load-theme 'cyberpunk) "Dark theme installed!"))
 
 ;;;###autoload
 (defun theme-pack/no-theme! ()
   "Revert to no theme."
   (interactive)
-  (theme-pack/--disable-themes!))
+  (theme-pack/apply (apply-partially 'theme-pack/--disable-themes!) "Reset theme done!"))
 
 (theme-pack/dark!)
 
