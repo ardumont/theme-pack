@@ -4,12 +4,12 @@
 
 ;;; Code:
 
-(install-packs '(cyberpunk-theme
-                 solarized-theme
-                 gandalf-theme
-                 color-theme
-                 deferred
-                 dash))
+(install-packages-pack/install-packs '(cyberpunk-theme
+                                       solarized-theme
+                                       gandalf-theme
+                                       color-theme
+                                       deferred
+                                       dash))
 
 (require 'deferred)
 (require 'dash)
