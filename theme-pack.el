@@ -9,7 +9,11 @@
                                        gandalf-theme
                                        color-theme
                                        deferred
-                                       dash))
+                                       dash
+                                       smart-mode-line))
+
+(require 'smart-mode-line)
+(setq sml/no-confirm-load-theme t)
 
 (require 'deferred)
 (require 'dash)
@@ -83,13 +87,19 @@ Display the LOG when done."
 (defun theme-pack/light! ()
   "For outside."
   (interactive)
-  (theme-pack/apply (apply-partially 'theme-pack/--load-theme 'solarized-light) "Light theme installed!"))
+  (theme-pack/apply (lambda ()
+                      (theme-pack/--load-theme 'solarized-light)
+                      (sml/apply-theme 'light))
+                    "Light theme installed!"))
 
 ;;;###autoload
 (defun theme-pack/dark! ()
   "Default theme for the inside."
   (interactive)
-  (theme-pack/apply (apply-partially 'theme-pack/--load-theme 'cyberpunk) "Dark theme installed!"))
+  (theme-pack/apply (lambda ()
+                      (theme-pack/--load-theme 'cyberpunk)
+                      (sml/apply-theme 'dark))
+                    "Dark theme installed!"))
 
 ;;;###autoload
 (defun theme-pack/no-theme! ()
