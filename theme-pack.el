@@ -10,8 +10,10 @@
                                        color-theme
                                        deferred
                                        dash
-                                       smart-mode-line))
+                                       smart-mode-line
+                                       s))
 
+(require 's)
 (require 'smart-mode-line)
 (setq sml/no-confirm-load-theme t)
 
