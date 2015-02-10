@@ -27,6 +27,7 @@
 (global-hl-line-mode 1)
 
 ;; death to scroll bar
+(require 'scroll-bar)
 (set-scroll-bar-mode nil)
 
 ;; some text/font/color tweaks
