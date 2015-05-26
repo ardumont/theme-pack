@@ -36,7 +36,11 @@
 ;; (set-face-background 'default "black")
 
 (set-language-environment "UTF-8")
+
 (blink-cursor-mode 1)
+
+(setq cursor-type 'hbar) ;; box, hollow, hbar, bar
+(setq blink-cursor-blinks 0);; <= 0 blinks forever, otherwise stops after `'10`'
 
 (defun theme-pack/hostname! ()
   "Return the hostname of the current computer."
