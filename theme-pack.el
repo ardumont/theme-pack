@@ -48,7 +48,9 @@
 
 ;; Depending on the hostname, will set a font or another
 (let* ((hostname  (theme-pack/hostname!))
-       (font-size (if (string= hostname "dagobah") 105 80)))
+       (font-size (cond ((string= hostname "dagobah") 105)
+                        ((string= hostname "corellia") 95)
+                        (t 80))))
   ;; (set-frame-parameter nil 'font "DejaVu Sans Mono-15")
   (set-frame-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
   ;; (x-list-fonts "*")
