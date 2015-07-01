@@ -131,6 +131,7 @@ Display the LOG when done."
     (define-key map (kbd "C-c t d") 'theme-pack/dark!)
     (define-key map (kbd "C-c t l") 'theme-pack/light!)
     (define-key map (kbd "C-c t r") 'theme-pack/no-theme!)
+    (define-key map (kbd "C-c t s") 'theme-pack/set-size!)
     map)
   "Keymap for theme-pack mode.")
 
