@@ -46,15 +46,21 @@
   "Return the hostname of the current computer."
   (-> "hostname" shell-command-to-string s-trim))
 
-;; Depending on the hostname, will set a font or another
-(let* ((hostname  (theme-pack/hostname!))
-       (font-size (cond ((string= hostname "dagobah") 105)
-                        ((string= hostname "corellia") 95)
-                        (t 80))))
-  ;; (set-frame-parameter nil 'font "DejaVu Sans Mono-15")
-  (set-frame-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
-  ;; (x-list-fonts "*")
-  (set-face-attribute 'default nil :height font-size))
+(defun theme-pack/set-size! (&optional args)
+  "Depending on the hostname, will set a font or another.
+ARGS With universal argument, can force the font-size to the input value."
+  (interactive "P")
+  (let* ((hostname  (theme-pack/hostname!))
+         (font-size (if args args
+                      (cond ((string= hostname "dagobah") 105)
+                            ((string= hostname "corellia") 120)
+                            (t 80)))))
+    ;; (set-frame-parameter nil 'font "DejaVu Sans Mono-15")
+    (set-frame-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
+    ;; (x-list-fonts "*")
+    (set-face-attribute 'default nil :height font-size)))
+
+(theme-pack/set-size!)
 
 ;;; dark theme
 ;; (load-theme 'solarized-dark 'no-confirm)
