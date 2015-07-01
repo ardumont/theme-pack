@@ -46,12 +46,12 @@
   "Return the hostname of the current computer."
   (-> "hostname" shell-command-to-string s-trim))
 
-(defun theme-pack/set-size! (&optional args)
+(defun theme-pack/set-size! (&optional font-size-input)
   "Depending on the hostname, will set a font or another.
 ARGS With universal argument, can force the font-size to the input value."
   (interactive "P")
   (let* ((hostname  (theme-pack/hostname!))
-         (font-size (if args args
+         (font-size (if font-size-input font-size-input
                       (cond ((string= hostname "dagobah") 105)
                             ((string= hostname "corellia") 120)
                             (t 80)))))
