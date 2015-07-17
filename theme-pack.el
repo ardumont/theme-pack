@@ -42,6 +42,11 @@
 (setq cursor-type 'hbar) ;; box, hollow, hbar, bar
 (setq blink-cursor-blinks 0);; <= 0 blinks forever, otherwise stops after `'10`'
 
+(use-package whitespace
+  :config
+  (custom-set-variables '(whitespace-line-column 80) ;; limit line length
+                        '(whitespace-style (face tabs empty trailing lines-tail))))
+
 (defun theme-pack/hostname! ()
   "Return the hostname of the current computer."
   (-> "hostname" shell-command-to-string s-trim))
