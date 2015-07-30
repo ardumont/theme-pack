@@ -4,54 +4,51 @@
 
 ;;; Code:
 
-(install-packages-pack/install-packs '(cyberpunk-theme
-                                       solarized-theme
-                                       gandalf-theme
-                                       color-theme
-                                       deferred
-                                       dash
-                                       smart-mode-line
-                                       s))
+;; (use-package cyberpunk-theme)
+;; (use-package solarized-theme)
+;; (use-package gandalf-theme)
 
-(require 's)
-(require 'smart-mode-line)
-(setq sml/no-confirm-load-theme t)
+(use-package s)
+(use-package smart-mode-line
+  :config (custom-set-variables '(sml/no-confirm-load-theme t)))
 
-(require 'deferred)
-(require 'dash)
+(use-package deferred)
+(use-package dash)
 
-(require 'hl-line)
-(require 'frame)
+(use-package hl-line
+  :config (global-hl-line-mode 1))
 
-;; highlight the current line everywhere
-(global-hl-line-mode 1)
+(use-package frame)
 
-;; death to scroll bar
-(require 'scroll-bar)
-(set-scroll-bar-mode nil)
+(use-package scroll-bar
+  ;; death to scroll bar
+  :config (set-scroll-bar-mode nil))
 
 ;; some text/font/color tweaks
 
-(setq-default fill-column 120)
-;; (set-face-background 'default "black")
+;; (use-package face
+;;   :config (set-face-background 'default "black"))
 
 (set-language-environment "UTF-8")
 
-(blink-cursor-mode 1)
+(use-package frame
+  :config
+  (blink-cursor-mode 1)
+  ;; <= 0 blinks forever, otherwise stops after `'10`'
+  (custom-set-variables '(blink-cursor-blinks 0)))
 
-(setq cursor-type 'hbar) ;; box, hollow, hbar, bar
-(setq blink-cursor-blinks 0);; <= 0 blinks forever, otherwise stops after `'10`'
+(custom-set-variables '(cursor-type 'hbar)) ;; box, hollow, hbar, bar
 
 (use-package whitespace
   :config
   (custom-set-variables '(whitespace-line-column 80) ;; limit line length
-                        '(whitespace-style (face tabs empty trailing lines-tail))))
+                        '(whitespace-style '(face tabs empty trailing lines-tail))))
 
 (defun theme-pack/hostname! ()
   "Return the hostname of the current computer."
   (-> "hostname" shell-command-to-string s-trim))
 
-(defun theme-pack/set-size! (&optional font-size-input)
+(defun theme-pack-set-size (&optional font-size-input)
   "Depending on the hostname, will set a font or another.
 ARGS With universal argument, can force the font-size to the input value."
   (interactive "P")
@@ -65,7 +62,7 @@ ARGS With universal argument, can force the font-size to the input value."
     ;; (x-list-fonts "*")
     (set-face-attribute 'default nil :height font-size)))
 
-(theme-pack/set-size!)
+(theme-pack-set-size)
 
 ;;; dark theme
 ;; (load-theme 'solarized-dark 'no-confirm)
@@ -80,22 +77,22 @@ ARGS With universal argument, can force the font-size to the input value."
 ;; (load-theme 'adwaita 'no-confirm)
 ;; (load-theme 'solarized-light 'no-confirm)
 
-(require 'color-theme)
+(use-package color-theme)
 
-(defun theme-pack/apply (fn log)
+(defun theme-pack--apply (fn log)
   "Execute the function FN.
 Display the LOG when done."
   (lexical-let ((msg log))
     (deferred:$
       (deferred:next
-        'theme-pack/--disable-themes!)
+        'theme-pack--disable-themes!)
       (deferred:nextc it
         fn)
       (deferred:nextc it
         (lambda ()
           (message (format "theme-pack - %s" msg)))))))
 
-(defun theme-pack/--disable-themes! ()
+(defun theme-pack--disable-themes! ()
   "Disable current enabled themes."
   (mapc 'disable-theme custom-enabled-themes))
 
@@ -104,39 +101,39 @@ Display the LOG when done."
   (load-theme theme 'no-confirm))
 
 ;;;###autoload
-(defun theme-pack/light! ()
+(defun theme-pack-light ()
   "For outside."
   (interactive)
-  (theme-pack/apply (lambda ()
+  (theme-pack--apply (lambda ()
                       (theme-pack/--load-theme 'solarized-light)
                       (sml/apply-theme 'light))
                     "Light theme installed!"))
 
 ;;;###autoload
-(defun theme-pack/dark! ()
+(defun theme-pack-dark ()
   "Default theme for the inside."
   (interactive)
-  (theme-pack/apply (lambda ()
+  (theme-pack--apply (lambda ()
                       (theme-pack/--load-theme 'cyberpunk)
                       (sml/apply-theme 'dark))
                     "Dark theme installed!"))
 
 ;;;###autoload
-(defun theme-pack/no-theme! ()
+(defun theme-pack-no-theme ()
   "Revert to no theme."
   (interactive)
-  (theme-pack/apply (lambda ()) "Reset theme done!"))
+  (theme-pack--apply (lambda ()) "Reset theme done!"))
 
-(theme-pack/dark!)
+(theme-pack-dark)
 
 ;; ######### define mode
 
 (defvar theme-pack-mode-map
   (let ((map (make-sparse-keymap)))
-    (define-key map (kbd "C-c t d") 'theme-pack/dark!)
-    (define-key map (kbd "C-c t l") 'theme-pack/light!)
-    (define-key map (kbd "C-c t r") 'theme-pack/no-theme!)
-    (define-key map (kbd "C-c t s") 'theme-pack/set-size!)
+    (define-key map (kbd "C-c t d") 'theme-pack-dark)
+    (define-key map (kbd "C-c t l") 'theme-pack-light)
+    (define-key map (kbd "C-c t r") 'theme-pack-no-theme)
+    (define-key map (kbd "C-c t s") 'theme-pack-set-size)
     map)
   "Keymap for theme-pack mode.")
 
