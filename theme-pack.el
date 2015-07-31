@@ -40,7 +40,7 @@
 (use-package buffer
   :config
   ;; box, hollow, hbar, bar
-  (custom-set-variables '(cursor-type 'hbar)))
+  (custom-set-variables '(cursor-type 'bar)))
 
 (use-package whitespace
   :config
