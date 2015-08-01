@@ -34,16 +34,14 @@
 
 (set-language-environment "UTF-8")
 
-(use-package frame
-  :config
-  (blink-cursor-mode 1)
-  ;; <= 0 blinks forever, otherwise stops after `'10`'
-  (custom-set-variables '(blink-cursor-blinks 0)))
+(use-package frame)
+(use-package buffer)
 
-(use-package buffer
-  :config
-  ;; box, hollow, hbar, bar
-  (custom-set-variables '(cursor-type 'bar)))
+(blink-cursor-mode 1)
+;; <= 0 blinks forever, otherwise stops after `'10`'
+(custom-set-variables '(blink-cursor-blinks 0))
+;; box, hollow, hbar, bar
+(custom-set-variables '(cursor-type 'bar))
 
 (use-package whitespace
   :config
