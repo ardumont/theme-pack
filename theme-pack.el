@@ -9,8 +9,11 @@
 ;; (use-package gandalf-theme)
 
 (use-package s)
+
 (use-package smart-mode-line
-  :config (custom-set-variables '(sml/no-confirm-load-theme t)))
+  :config
+  (custom-set-variables '(sml/no-confirm-load-theme t))
+  (sml/setup))
 
 (use-package deferred)
 (use-package dash)
