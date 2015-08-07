@@ -82,6 +82,8 @@ ARGS With universal argument, can force the font-size to the input value."
 ;; (load-theme 'solarized-light 'no-confirm)
 
 (use-package color-theme)
+;; (use-package niflheim-theme)
+;; (use-package zerodark-theme)
 
 (defun theme-pack--apply (fn log)
   "Execute the function FN.
