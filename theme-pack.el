@@ -53,7 +53,7 @@
   (-> "hostname" shell-command-to-string s-trim))
 
 (defun theme-pack-set-size (&optional font-size-input)
-  "Depending on the hostname, will set a font or another.
+  "Depending on the hostname, will set the optional FONT-SIZE-INPUT.
 ARGS With universal argument, can force the font-size to the input value."
   (interactive "P")
   (let* ((hostname  (theme-pack/hostname!))
