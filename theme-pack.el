@@ -18,24 +18,21 @@
 (use-package deferred)
 (use-package dash)
 
-(use-package hl-line
-  :config (global-hl-line-mode 1))
+(require 'hl-line)
 
-(use-package frame)
+(global-hl-line-mode 1)
 
-(use-package scroll-bar
-  ;; death to scroll bar
-  :config (set-scroll-bar-mode nil))
+;; (use-package frame)
+
+(require 'scroll-bar)
+;; death to scroll bar
+(set-scroll-bar-mode nil)
 
 ;; some text/font/color tweaks
 
-;; (use-package face
-;;   :config (set-face-background 'default "black"))
-
 (set-language-environment "UTF-8")
 
-(use-package frame)
-(use-package buffer)
+(require 'frame)
 
 (blink-cursor-mode 1)
 
