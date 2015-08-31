@@ -38,10 +38,9 @@
 (use-package buffer)
 
 (blink-cursor-mode 1)
-;; <= 0 blinks forever, otherwise stops after `'10`'
-(custom-set-variables '(blink-cursor-blinks 0))
-;; box, hollow, hbar, bar
-(custom-set-variables '(cursor-type 'bar))
+
+(custom-set-variables '(blink-cursor-blinks 0) ;; <= 0 blinks forever, otherwise stops after `'10`'
+                      '(cursor-type 'bar))  ;; box, hollow, hbar, bar
 
 (use-package whitespace
   :config
