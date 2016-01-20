@@ -10,10 +10,10 @@
 
 (use-package s)
 
-(use-package smart-mode-line
-  :config
-  (custom-set-variables '(sml/no-confirm-load-theme t))
-  (sml/setup))
+;; (use-package smart-mode-line
+;;   :config
+;;   (custom-set-variables '(sml/no-confirm-load-theme t))
+;;   (sml/setup))
 
 (use-package deferred)
 (use-package dash)
@@ -68,6 +68,7 @@ ARGS With universal argument, can force the font-size to the input value."
 ;; (load-theme 'solarized-dark 'no-confirm)
 ;; (load-theme 'cyberpunk 'no-confirm)
 ;; (load-theme 'misterioso 'no-confirm)
+;; (load-theme 'spacemacs-dark 'no-confirm)
 
 ;;; grey theme
 ;; (load-theme 'zenburn 'no-confirm)
@@ -76,6 +77,7 @@ ARGS With universal argument, can force the font-size to the input value."
 ;; (load-theme 'gandalf 'no-confirm)
 ;; (load-theme 'adwaita 'no-confirm)
 ;; (load-theme 'solarized-light 'no-confirm)
+;; (load-theme 'spacemacs-light 'no-confirm)
 
 (use-package color-theme)
 ;; (use-package niflheim-theme)
@@ -102,23 +104,25 @@ Display the LOG when done."
   "Disable currently enabled themes then load THEME."
   (load-theme theme 'no-confirm))
 
+(use-package spacemacs-theme)
+
 ;;;###autoload
 (defun theme-pack-light ()
   "For outside."
   (interactive)
   (theme-pack--apply (lambda ()
-                      (theme-pack/--load-theme 'solarized-light)
-                      (sml/apply-theme 'light))
-                    "Light theme installed!"))
+                       (theme-pack/--load-theme 'spacemacs-light)
+                       (Sml/Apply-theme 'light))
+                     "Light theme installed!"))
 
 ;;;###autoload
 (defun theme-pack-dark ()
   "Default theme for the inside."
   (interactive)
   (theme-pack--apply (lambda ()
-                      (theme-pack/--load-theme 'cyberpunk)
-                      (sml/apply-theme 'dark))
-                    "Dark theme installed!"))
+                       (theme-pack/--load-theme 'spacemacs-dark)
+                       (sml/apply-theme 'dark))
+                     "Dark theme installed!"))
 
 ;;;###autoload
 (defun theme-pack-no-theme ()
