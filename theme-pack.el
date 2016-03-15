@@ -10,10 +10,10 @@
 
 (use-package s)
 
-;; (use-package smart-mode-line
-;;   :config
-;;   (custom-set-variables '(sml/no-confirm-load-theme t))
-;;   (sml/setup))
+(use-package smart-mode-line
+  :config
+  (custom-set-variables '(sml/no-confirm-load-theme t))
+  (sml/setup))
 
 (use-package deferred)
 (use-package dash)
@@ -112,7 +112,7 @@ Display the LOG when done."
   (interactive)
   (theme-pack--apply (lambda ()
                        (theme-pack/--load-theme 'spacemacs-light)
-                       (Sml/Apply-theme 'light))
+                       (sml/apply-theme 'light))
                      "Light theme installed!"))
 
 ;;;###autoload
