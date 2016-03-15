@@ -158,5 +158,8 @@ Display the LOG when done."
 
 (global-theme-pack-mode)
 
+(use-package powerline
+  :init (powerline-default-theme))
+
 (provide 'theme-pack)
 ;;; theme-pack.el ends here
