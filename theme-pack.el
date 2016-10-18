@@ -55,7 +55,7 @@ ARGS With universal argument, can force the font-size to the input value."
   (let* ((hostname  (theme-pack/hostname!))
          (font-size (if font-size-input font-size-input
                       (cond ((string= hostname "dagobah") 105)
-                            ((string= hostname "corellia") 105)
+                            ((string= hostname "corellia") 100)
                             (t 80)))))
     ;; (set-frame-parameter nil 'font "DejaVu Sans Mono-15")
     (set-frame-font "-unknown-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
