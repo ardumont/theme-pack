@@ -62,8 +62,6 @@ ARGS With universal argument, can force the font-size to the input value."
     ;; (x-list-fonts "*")
     (set-face-attribute 'default nil :height font-size)))
 
-(theme-pack-set-size)
-
 ;;; dark theme
 ;; (load-theme 'solarized-dark 'no-confirm)
 ;; (load-theme 'cyberpunk 'no-confirm)
@@ -130,8 +128,6 @@ Display the LOG when done."
   (interactive)
   (theme-pack--apply (lambda ()) "Reset theme done!"))
 
-(theme-pack-dark)
-
 ;; ######### define mode
 
 (defvar theme-pack-mode-map
@@ -155,8 +151,6 @@ Display the LOG when done."
 (defun theme-pack-on ()
   "Turn on `theme-pack-mode'."
   (theme-pack-mode +1))
-
-(global-theme-pack-mode)
 
 (use-package powerline
   :init (powerline-default-theme))
