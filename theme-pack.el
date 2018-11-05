@@ -41,7 +41,7 @@
 
 (use-package whitespace
   :config
-  (custom-set-variables '(whitespace-line-column 80) ;; limit line length
+  (custom-set-variables '(whitespace-line-column 79) ;; limit line length
                         '(whitespace-style '(face tabs empty trailing lines-tail))))
 
 (defun theme-pack/hostname! ()
