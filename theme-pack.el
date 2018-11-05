@@ -4,25 +4,16 @@
 
 ;;; Code:
 
-;; (use-package cyberpunk-theme)
-;; (use-package solarized-theme)
-;; (use-package gandalf-theme)
+(require 's)
+(require 'smart-mode-line)
+(custom-set-variables '(sml/no-confirm-load-theme t))
+(sml/setup)
 
-(use-package s)
-
-(use-package smart-mode-line
-  :config
-  (custom-set-variables '(sml/no-confirm-load-theme t))
-  (sml/setup))
-
-(use-package deferred)
-(use-package dash)
-
+(require 'deferred)
+(require 'dash)
+(require 'powerline)
 (require 'hl-line)
-
 (global-hl-line-mode 1)
-
-;; (use-package frame)
 
 (require 'scroll-bar)
 ;; death to scroll bar
@@ -31,18 +22,17 @@
 ;; some text/font/color tweaks
 
 (set-language-environment "UTF-8")
-
 (require 'frame)
-
 (blink-cursor-mode 1)
-
 (custom-set-variables '(blink-cursor-blinks 0) ;; <= 0 blinks forever, otherwise stops after `'10`'
                       '(cursor-type 'bar))  ;; box, hollow, hbar, bar
 
-(use-package whitespace
-  :config
-  (custom-set-variables '(whitespace-line-column 79) ;; limit line length
-                        '(whitespace-style '(face tabs empty trailing lines-tail))))
+(require 'whitespace)
+(custom-set-variables '(whitespace-line-column 79) ;; limit line length
+                      '(whitespace-style '(face tabs empty trailing lines-tail)))
+
+(require 'color-theme)
+(require 'spacemacs-theme)
 
 (defun theme-pack/hostname! ()
   "Return the hostname of the current computer."
@@ -64,25 +54,6 @@ ARGS With universal argument, can force the font-size to the input value."
     ;; (x-list-fonts "*")
     (set-face-attribute 'default nil :height font-size)))
 
-;;; dark theme
-;; (load-theme 'solarized-dark 'no-confirm)
-;; (load-theme 'cyberpunk 'no-confirm)
-;; (load-theme 'misterioso 'no-confirm)
-;; (load-theme 'spacemacs-dark 'no-confirm)
-
-;;; grey theme
-;; (load-theme 'zenburn 'no-confirm)
-
-;;; light themes
-;; (load-theme 'gandalf 'no-confirm)
-;; (load-theme 'adwaita 'no-confirm)
-;; (load-theme 'solarized-light 'no-confirm)
-;; (load-theme 'spacemacs-light 'no-confirm)
-
-(use-package color-theme)
-;; (use-package niflheim-theme)
-;; (use-package zerodark-theme)
-
 (defun theme-pack--apply (fn log)
   "Execute the function FN.
 Display the LOG when done."
@@ -103,8 +74,6 @@ Display the LOG when done."
 (defun theme-pack/--load-theme (theme)
   "Disable currently enabled themes then load THEME."
   (load-theme theme 'no-confirm))
-
-(use-package spacemacs-theme)
 
 ;;;###autoload
 (defun theme-pack-light ()
@@ -153,8 +122,6 @@ Display the LOG when done."
 (defun theme-pack-on ()
   "Turn on `theme-pack-mode'."
   (theme-pack-mode +1))
-
-(use-package powerline)
 
 (provide 'theme-pack)
 ;;; theme-pack.el ends here
