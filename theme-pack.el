@@ -38,6 +38,7 @@
   "Return the hostname of the current computer."
   (-> "hostname" shell-command-to-string s-trim))
 
+;;;###autoload
 (defun theme-pack-set-size (&optional font-size-input)
   "Depending on the hostname, will set the optional FONT-SIZE-INPUT.
 ARGS With universal argument, can force the font-size to the input value."
