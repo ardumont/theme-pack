@@ -154,8 +154,7 @@ Display the LOG when done."
   "Turn on `theme-pack-mode'."
   (theme-pack-mode +1))
 
-(use-package powerline
-  :init (powerline-default-theme))
+(use-package powerline)
 
 (provide 'theme-pack)
 ;;; theme-pack.el ends here
