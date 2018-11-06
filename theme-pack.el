@@ -6,8 +6,6 @@
 
 (require 's)
 (require 'smart-mode-line)
-(custom-set-variables '(sml/no-confirm-load-theme t))
-(sml/setup)
 
 (require 'deferred)
 (require 'dash)
@@ -127,6 +125,9 @@ Display the LOG when done."
 (defun theme-pack-on ()
   "Turn on `theme-pack-mode'."
   (theme-pack-mode +1))
+
+(custom-set-variables '(sml/no-confirm-load-theme t))
+(sml/setup)
 
 (provide 'theme-pack)
 ;;; theme-pack.el ends here
