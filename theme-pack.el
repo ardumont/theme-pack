@@ -34,6 +34,13 @@
 (require 'color-theme)
 (require 'spacemacs-theme)
 
+;; disable menu bar
+(menu-bar-mode -1)
+;; disable scrollbar
+(toggle-scroll-bar -1)
+;; disable toolbar
+(tool-bar-mode -1)
+
 (defun theme-pack/hostname! ()
   "Return the hostname of the current computer."
   (-> "hostname" shell-command-to-string s-trim))
