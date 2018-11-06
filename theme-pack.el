@@ -51,7 +51,7 @@ ARGS With universal argument, can force the font-size to the input value."
   (interactive "P")
   (let* ((hostname  (theme-pack/hostname!))
          (font-size (if font-size-input font-size-input
-                      (cond ((string= hostname "dagobah") 105)
+                      (cond ((string= hostname "dagobah") 110)
                             ((string= hostname "corellia") 110)
                             (t 80)))))
     (add-to-list 'default-frame-alist
