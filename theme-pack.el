@@ -87,8 +87,7 @@ Display the LOG when done."
   "For outside."
   (interactive)
   (theme-pack--apply (lambda ()
-                       (theme-pack/--load-theme 'spacemacs-light)
-                       (sml/apply-theme 'light))
+                       (theme-pack/--load-theme 'spacemacs-light))
                      "Light theme installed!"))
 
 ;;;###autoload
@@ -96,8 +95,7 @@ Display the LOG when done."
   "Default theme for the inside."
   (interactive)
   (theme-pack--apply (lambda ()
-                       (theme-pack/--load-theme 'spacemacs-dark)
-                       (sml/apply-theme 'dark))
+                       (theme-pack/--load-theme 'spacemacs-dark))
                      "Dark theme installed!"))
 
 ;;;###autoload
