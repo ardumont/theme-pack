@@ -32,7 +32,6 @@
                       '(whitespace-style '(face tabs empty trailing lines-tail)))
 
 (require 'color-theme)
-(require 'spacemacs-theme)
 
 ;; disable menu bar
 (menu-bar-mode -1)
