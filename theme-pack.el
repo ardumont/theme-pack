@@ -5,8 +5,6 @@
 ;;; Code:
 
 (require 's)
-(require 'smart-mode-line)
-
 (require 'deferred)
 (require 'dash)
 (require 'powerline)
@@ -125,9 +123,6 @@ Display the LOG when done."
 (defun theme-pack-on ()
   "Turn on `theme-pack-mode'."
   (theme-pack-mode +1))
-
-(custom-set-variables '(sml/no-confirm-load-theme t))
-(sml/setup)
 
 (provide 'theme-pack)
 ;;; theme-pack.el ends here
