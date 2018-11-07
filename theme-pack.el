@@ -27,8 +27,6 @@
 (custom-set-variables '(whitespace-line-column 79) ;; limit line length
                       '(whitespace-style '(face tabs empty trailing lines-tail)))
 
-(require 'color-theme)
-
 ;; disable menu bar
 (menu-bar-mode -1)
 ;; disable scrollbar
