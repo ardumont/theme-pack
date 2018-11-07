@@ -61,7 +61,7 @@ Display the LOG when done."
   (lexical-let ((msg log))
     (deferred:$
       (deferred:next
-        'theme-pack--disable-themes)
+	'theme-pack--disable-themes)
       (deferred:nextc it
         fn)
       (deferred:nextc it
@@ -69,8 +69,9 @@ Display the LOG when done."
           (message (format "theme-pack - %s" msg)))))))
 
 (defun theme-pack--disable-themes ()
-  "Disable current enabled themes."
-  (mapc 'disable-theme custom-enabled-themes))
+  "Disable current enabled themes if enabled. Do nothing otherwise."
+  (when (< 0 (length custom-enabled-themes))
+    (mapc 'disable-theme custom-enabled-themes)))
 
 (defun theme-pack/--load-theme (theme)
   "Disable currently enabled themes then load THEME."
