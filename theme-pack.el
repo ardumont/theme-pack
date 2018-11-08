@@ -75,20 +75,23 @@ Display the LOG when done."
 
 (defun theme-pack/--load-theme (theme)
   "Disable currently enabled themes then load THEME."
-  (load-theme theme 'no-confirm)
-  (message (format "theme-pack - theme %s applied!" theme)))
+  (load-theme theme 'no-confirm))
 
 ;;;###autoload
 (defun theme-pack-light ()
   "For outside."
   (interactive)
-  (theme-pack/--load-theme 'spacemacs-light))
+  (theme-pack--apply (lambda ()
+                       (theme-pack/--load-theme 'spacemacs-light))
+                     "Light theme installed!"))
 
 ;;;###autoload
 (defun theme-pack-dark ()
   "Default theme for the inside."
   (interactive)
-  (theme-pack/--load-theme 'spacemacs-dark))
+  (theme-pack--apply (lambda ()
+                       (theme-pack/--load-theme 'spacemacs-dark))
+                     "Dark theme installed!"))
 
 ;;;###autoload
 (defun theme-pack-no-theme ()
