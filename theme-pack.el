@@ -114,7 +114,8 @@ Display the LOG when done."
 
 \\{theme-pack-mode-map}"
   :lighter " TP"
-  :keymap theme-pack-mode-map)
+  :keymap theme-pack-mode-map
+  :global t)
 
 ;;;###autoload
 (define-globalized-minor-mode global-theme-pack-mode theme-pack-mode theme-pack-on)
