@@ -55,8 +55,11 @@ ARGS With universal argument, can force the font-size to the input value."
     ;; (x-list-fonts "*")
     (set-face-attribute 'default nil :height font-size)))
 
-(defun theme-pack--apply (fn log)
-  "Execute the function FN.
+(defvar theme-pack-default-make-frame-function after-make-frame-functions
+  "Keep the original functions from after-make-frame-functions variables")
+
+(defun theme-pack--install (fn log)
+  "Execute the function FN (install theme function).
 Display the LOG when done."
   (lexical-let ((msg log))
     (deferred:$
@@ -66,13 +69,19 @@ Display the LOG when done."
         fn)
       (deferred:nextc it
         (lambda ()
-          (message (format "theme-pack - %s" msg)))))))
+          (message (format "theme-pack - %s" msg))))))
+  ;; remove any prior installed theme functions
+  (setq after-make-frame-functions theme-pack-default-make-frame-function)
+  ;; install new one to draw with the right theme each frame (gui or
+  ;; no ui mode)
+  (lexical-let ((theme-fn fn))
+    (add-hook 'after-make-frame-functions (lambda (&optional frame) (funcall theme-fn)))))
 
 (defun theme-pack--disable-themes ()
   "Disable current enabled themes."
   (mapc 'disable-theme custom-enabled-themes))
 
-(defun theme-pack/--load-theme (theme)
+(defun theme-pack--load-theme (theme)
   "Disable currently enabled themes then load THEME."
   (load-theme theme 'no-confirm))
 
@@ -80,23 +89,23 @@ Display the LOG when done."
 (defun theme-pack-light ()
   "For outside."
   (interactive)
-  (theme-pack--apply (lambda ()
-                       (theme-pack/--load-theme 'spacemacs-light))
-                     "Light theme installed!"))
+  (theme-pack--install (lambda ()
+			 (theme-pack--load-theme 'spacemacs-light))
+		       "Light theme installed!"))
 
 ;;;###autoload
 (defun theme-pack-dark ()
   "Default theme for the inside."
   (interactive)
-  (theme-pack--apply (lambda ()
-                       (theme-pack/--load-theme 'spacemacs-dark))
-                     "Dark theme installed!"))
+  (theme-pack--install (lambda ()
+			 (theme-pack--load-theme 'spacemacs-dark))
+		       "Dark theme installed!"))
 
 ;;;###autoload
 (defun theme-pack-no-theme ()
   "Revert to no theme."
   (interactive)
-  (theme-pack--apply (lambda ()) "Reset theme done!"))
+  (theme-pack--install (lambda ()) "Reset theme done!"))
 
 ;; ######### define mode
 
