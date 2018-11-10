@@ -18,11 +18,10 @@
 (set-language-environment "UTF-8")
 (require 'frame)
 (blink-cursor-mode 1)
-(custom-set-variables '(blink-cursor-blinks 0) ;; <= 0 blinks forever, otherwise stops after `'10`'
-                      '(cursor-type 'bar))  ;; box, hollow, hbar, bar
-
 (require 'whitespace)
-(custom-set-variables '(whitespace-line-column 79) ;; limit line length
+(custom-set-variables '(blink-cursor-blinks 0) ;; <= 0 blinks forever, otherwise stops after `'10`'
+                      '(cursor-type 'bar)           ;; box, hollow, hbar, bar
+		      '(whitespace-line-column 79) ;; limit line length
                       '(whitespace-style '(face tabs empty trailing lines-tail)))
 
 ;; disable menu bar
