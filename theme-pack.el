@@ -45,15 +45,17 @@ ARGS With universal argument, can force the font-size to the input value."
   (interactive "P")
   (let* ((hostname  (theme-pack/hostname!))
          (font-size (if font-size-input font-size-input
-                      (cond ((string= hostname "dagobah") 110)
+                      (cond ((string= hostname "dagobah") 100)
                             ((string= hostname "corellia") 110)
                             (t 80)))))
-    (add-to-list 'default-frame-alist
-                 '(font . "DejaVu Sans Mono-12"))
+    (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono"))
+    ;; (set-face-attribute 'default nil :font "DejaVu Sans Mono-10")
+    ;; (set-face-attribute 'mode-line nil :font "DejaVu Sans Mono-8")
     ;; (set-frame-parameter nil 'font "DejaVu Sans Mono-16")
     ;; (set-frame-font "xft:-PfEd-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
     ;; (x-list-fonts "*")
-    (set-face-attribute 'default nil :height font-size)))
+    (set-face-attribute 'default nil :height font-size)
+    (set-face-attribute 'mode-line nil :height (- font-size 20))))
 
 (defvar theme-pack-default-make-frame-function after-make-frame-functions
   "Keep the original functions from after-make-frame-functions variables")
