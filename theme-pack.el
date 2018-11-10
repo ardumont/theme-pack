@@ -15,8 +15,6 @@
 ;; death to scroll bar
 (set-scroll-bar-mode nil)
 
-;; some text/font/color tweaks
-
 (set-language-environment "UTF-8")
 (require 'frame)
 (blink-cursor-mode 1)
