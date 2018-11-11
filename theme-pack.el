@@ -59,21 +59,20 @@ ARGS With universal argument, can force the font-size to the input value."
 (defun theme-pack--install (fn log)
   "Execute the function FN (install theme function).
 Display the LOG when done."
-  (lexical-let ((msg log))
+  (lexical-let ((msg log)
+		(theme-fn fn))
     (deferred:$
-      (deferred:next
-        'theme-pack--disable-themes)
+      (deferred:next 'theme-pack--disable-themes)  ;; deactivate previous theme
+      (deferred:nextc it theme-fn)                 ;; apply theme
       (deferred:nextc it
-        fn)
+	(lambda ()
+	  ;; remove any prior installed theme functions (frame creation routine)
+	  (setq after-make-frame-functions theme-pack-default-make-frame-function)
+	  ;; install new one to draw with the right theme each frame (x or no)
+	  (add-hook 'after-make-frame-functions (lambda (&optional frame) (funcall theme-fn)))))
       (deferred:nextc it
-        (lambda ()
-          (message (format "theme-pack - %s" msg))))))
-  ;; remove any prior installed theme functions
-  (setq after-make-frame-functions theme-pack-default-make-frame-function)
-  ;; install new one to draw with the right theme each frame (gui or
-  ;; no ui mode)
-  (lexical-let ((theme-fn fn))
-    (add-hook 'after-make-frame-functions (lambda (&optional frame) (funcall theme-fn)))))
+	(lambda ()
+	  (message (format "theme-pack - %s" msg)))))))
 
 (defun theme-pack--disable-themes ()
   "Disable current enabled themes."
