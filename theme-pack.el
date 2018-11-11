@@ -50,7 +50,6 @@ ARGS With universal argument, can force the font-size to the input value."
     ;; (set-face-attribute 'mode-line nil :font "DejaVu Sans Mono-8")
     ;; (set-frame-parameter nil 'font "DejaVu Sans Mono-16")
     ;; (set-frame-font "xft:-PfEd-DejaVu Sans Mono-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1")
-    ;; (x-list-fonts "*")
     (set-face-attribute 'default nil :height font-size)
     (set-face-attribute 'mode-line nil :height (- font-size 20))))
 
