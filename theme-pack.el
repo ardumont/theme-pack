@@ -36,7 +36,7 @@
   "Depending on the hostname, will set the optional FONT-SIZE-INPUT.
 ARGS With universal argument, can force the font-size to the input value."
   (interactive "P")
-  (let ((font-size (if font-size-input font-size-input 80)))
+  (let ((font-size (if font-size-input font-size-input 100)))
     (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono"))
     ;; (set-face-attribute 'default nil :font "DejaVu Sans Mono-10")
     ;; (set-face-attribute 'mode-line nil :font "DejaVu Sans Mono-8")
