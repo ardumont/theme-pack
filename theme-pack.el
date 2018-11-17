@@ -31,20 +31,12 @@
 ;; disable toolbar
 (tool-bar-mode -1)
 
-(defun theme-pack/hostname! ()
-  "Return the hostname of the current computer."
-  (-> "hostname" shell-command-to-string s-trim))
-
 ;;;###autoload
 (defun theme-pack-set-size (&optional font-size-input)
   "Depending on the hostname, will set the optional FONT-SIZE-INPUT.
 ARGS With universal argument, can force the font-size to the input value."
   (interactive "P")
-  (let* ((hostname  (theme-pack/hostname!))
-         (font-size (if font-size-input font-size-input
-                      (cond ((string= hostname "dagobah") 100)
-                            ((string= hostname "corellia") 110)
-                            (t 80)))))
+  (let ((font-size (if font-size-input font-size-input 80)))
     (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono"))
     ;; (set-face-attribute 'default nil :font "DejaVu Sans Mono-10")
     ;; (set-face-attribute 'mode-line nil :font "DejaVu Sans Mono-8")
